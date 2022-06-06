@@ -4,7 +4,6 @@ import { DEFAULT_ALCHEMY_API_KEY, EthersNetwork } from '../util/const';
 import { AlchemyProvider } from './alchemy-provider';
 import { Listener } from '@ethersproject/abstract-provider';
 import { Event } from '@ethersproject/providers/lib/base-provider';
-import SturdyWebSocket from 'sturdy-websocket';
 import { AlchemyEventType } from '../types/types';
 import { BatchPart } from './websocket-backfiller';
 
@@ -45,17 +44,18 @@ export class AlchemyWebSocketProvider
       apiKey,
       'wss'
     );
+    console.log(getWebSocketConstructor.toString().substring(0, 1));
 
     // TODO: Add full WSS support and backfill
-    const ws = new SturdyWebSocket(connection.url, 'alchemy-sdk', {
-      wsConstructor: getWebSocketConstructor()
-    });
+    // const ws = new SturdyWebSocket(connection.url, 'alchemy-sdk', {
+    //   wsConstructor: getWebSocketConstructor()
+    // });
 
     // Normalize the Alchemy named network input to the network names used by
     // ethers. This allows the parent super constructor in JsonRpcProvider to
     // correctly set the network.
     const ethersNetwork = EthersNetwork[alchemyNetwork];
-    super(ws as any, ethersNetwork);
+    super(connection.url, ethersNetwork);
     this.apiKey = apiKey;
   }
 
@@ -180,7 +180,7 @@ export class AlchemyWebSocketProvider
 
       return result;
     } else {
-      return super.emit(eventName, args);
+      return super.emit(eventName, ...args);
     }
   }
 
