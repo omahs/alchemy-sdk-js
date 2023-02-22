@@ -63,7 +63,7 @@ If you are already using Ethers.js, you should be simply able to replace the Eth
 
 > **ℹ️ ENS Name Resolution**
 >
-> The Alchemy SDK now supports ENS names (e.g. `vitalik.eth`) for every parameter where you can pass in a Externally Owned Address, or user address (e.g. `0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045`).
+> The Alchemy SDK now supports ENS names (e.g. `vitalik.eth`) for every parameter where you can pass in an Externally Owned Address, or user address (e.g. `0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045`).
 
 ```ts
 import { Alchemy, AlchemySubscription } from 'alchemy-sdk';
@@ -208,7 +208,7 @@ under the `alchemy.nft` namespace:
 - `getNftMetadata()`: Get the NFT metadata for an NFT contract address and tokenId.
 - `getNftMetadataBatch()`: Get the NFT metadata for multiple NFT contract addresses/token id pairs.
 - `getContractMetadata()`: Get the metadata associated with an NFT contract
-- `getContractsForOwner()`: Get all NFT contracts that the provided owner address owns.
+- `getContractsForOwner()`: Get all NFT contracts than the provided owner address owns.
 - `getNftsForOwner()`: Get NFTs for an owner address.
 - `getNftsForOwnerIterator()`: Get NFTs for an owner address as an async iterator (handles paging automatically).
 - `getNftsForContract()`: Get all NFTs for a contract address.
